@@ -1,10 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:12-alpine' }
+    }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'node -v'
+                sh 'yarn -v'
             }
         }
         stage('Test') {
